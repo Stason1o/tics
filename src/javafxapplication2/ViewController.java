@@ -5,13 +5,10 @@
  */
 package javafxapplication2;
 
-import static java.awt.SystemColor.menu;
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
@@ -23,7 +20,7 @@ import javafx.stage.Stage;
  *
  * @author Stas
  */
-public class JavaFXApplication2 {
+public class ViewController {
     int counter;
     Button button1 = new Button();
     Button button2 = new Button();
@@ -51,7 +48,7 @@ public class JavaFXApplication2 {
         
         counter = 0;
         
-        actionButtons();
+        
         
         StackPane root = new StackPane();
         
@@ -87,18 +84,16 @@ public class JavaFXApplication2 {
         button7.setMinSize(100, 100);
         button8.setMinSize(100, 100);
         button9.setMinSize(100, 100);
-        menuBar.setMinSize(300, 20);
-        Scene scene = new Scene(root, 300, 250);
+        menuBar.setMinSize(300, 10);
+        Scene scene = new Scene(root, 300, 300);
         
         Stage primaryStage = new Stage();
-        primaryStage.setTitle("Hello World!");
+        primaryStage.setTitle("TicTacToe");
         primaryStage.setScene(scene);
         primaryStage.show();
+        actionButtons();
     }
 
-    /**
-     * @param args the command line arguments
-     */
     
     public void actionButtons(){
         button1.setOnAction(new EventHandler<ActionEvent>() {

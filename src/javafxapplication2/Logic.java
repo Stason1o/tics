@@ -12,8 +12,8 @@ import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
 
-public class logic extends Application {
-    JavaFXApplication2 view = new JavaFXApplication2();
+public class Logic extends Application {
+    ViewController view = new ViewController();
     String[][] matrix = {{"","",""},{"","",""},{"","",""}};
     Alert  alert   = new Alert(Alert.AlertType.CONFIRMATION);
     boolean XWin = false;
@@ -22,96 +22,112 @@ public class logic extends Application {
     
     @Override
     public void start(Stage primaryStage){
-        view.init();
+        
         do{
-            checkGame();
+            view.init();
+            fillMatrix();
         }while(XWin == true || OWin == true || draw == true);
     }
-    public void game(){
-        
-    }
     
-    public void checkGame(){
+    public void fillMatrix(){
         
         if(view.button1.getText().equals("X")){
             matrix[0][0] = "X";
-            check();
+            check("X");
+            check("O");
         }
         else if(view.button1.getText().equals("O")){
             matrix[0][0] = "O";
-            check();
+            check("X");
+            check("O");
         }
-        
+
         if(view.button2.getText().equals("X")){
             matrix[0][1] = "X";
-            check();
+            check("X");
+            check("O");
         }
         else if(view.button2.getText().equals("O")){
             matrix[0][1] = "O";
-            check();
+            check("X");
+            check("O");
         }
         
         if(view.button3.getText().equals("X")){
             matrix[0][2] = "X";
-            check();
+            check("X");
+            check("O");
         }
         else if(view.button3.getText().equals("O")){
             matrix[0][2] = "O";
-            check();
+            check("X");
+            check("O");
         }
         
         if(view.button4.getText().equals("X")){
             matrix[1][0] = "X";
-            check();
+            check("X");
+            check("O");
         }
         else if(view.button4.getText().equals("O")){
             matrix[1][0] = "O";
-            check();
+            check("X");
+            check("O");
         }
         
         if(view.button5.getText().equals("X")){
             matrix[1][1] = "X";
-            check();
+            check("X");
+            check("O");
         }
         else if(view.button5.getText().equals("O")){
             matrix[1][1] = "O";
-            check();
+            check("X");
+            check("O");
         }
         
         if(view.button6.getText().equals("X")){
             matrix[1][2] = "X";
-            check();
+            check("X");
+            check("O");
         }
         else if(view.button6.getText().equals("O")){
             matrix[1][2] = "O";
-            check();
+            check("X");
+            check("O");
         }
         
         if(view.button7.getText().equals("X")){
             matrix[2][0] = "X";
-            check();
+            check("X");
+            check("O");
         }
         else if(view.button7.getText().equals("O")){
             matrix[2][0] = "O";
-            check();
+            check("X");
+            check("O");
         }
         
         if(view.button8.getText().equals("X")){
             matrix[2][1] = "X";
-            check();
+            check("X");
+            check("O");
         }
         else if(view.button8.getText().equals("O")){
             matrix[2][1] = "O";
-            check();
+            check("X");
+            check("O");
         }
         
         if(view.button9.getText().equals("X")){
             matrix[2][2] = "X";
-            check();
+            check("X");
+            check("O");
         }
         else if(view.button9.getText().equals("O")){
             matrix[2][2] = "O";
-            check();
+            check("X");
+            check("O");
         }
     }
     
@@ -119,48 +135,31 @@ public class logic extends Application {
         return el1.equals(el2);
     }
     
-    public  boolean check(){// function of checking if either of players have won
+    public  void check(String str){// function of checking if either of players has won
         if(
-            (compare(matrix[0][0],matrix[0][1]) && compare(matrix[0][0],matrix[0][2])) && compare(matrix[0][0],"X") ||
-            (compare(matrix[1][0],matrix[1][1]) && compare(matrix[1][0],matrix[1][2])) && compare(matrix[1][0],"X") ||
-            (compare(matrix[2][0],matrix[2][1]) && compare(matrix[2][0],matrix[2][2])) && compare(matrix[2][0],"X") ||
+            (compare(matrix[0][0],matrix[0][1]) && compare(matrix[0][0],matrix[0][2])) && compare(matrix[0][0],str) ||
+            (compare(matrix[1][0],matrix[1][1]) && compare(matrix[1][0],matrix[1][2])) && compare(matrix[1][0],str) ||
+            (compare(matrix[2][0],matrix[2][1]) && compare(matrix[2][0],matrix[2][2])) && compare(matrix[2][0],str) ||
                 
-            (compare(matrix[0][1],matrix[1][1]) && compare(matrix[0][1],matrix[2][1])) && compare(matrix[0][1],"X") ||
-            (compare(matrix[0][2],matrix[1][2]) && compare(matrix[0][2],matrix[2][2])) && compare(matrix[0][2],"X") ||
-            (compare(matrix[0][0],matrix[1][0]) && compare(matrix[0][0],matrix[2][0])) && compare(matrix[0][0],"X") ||
+            (compare(matrix[0][1],matrix[1][1]) && compare(matrix[0][1],matrix[2][1])) && compare(matrix[0][1],str) ||
+            (compare(matrix[0][2],matrix[1][2]) && compare(matrix[0][2],matrix[2][2])) && compare(matrix[0][2],str) ||
+            (compare(matrix[0][0],matrix[1][0]) && compare(matrix[0][0],matrix[2][0])) && compare(matrix[0][0],str) ||
                 
-            (compare(matrix[1][1],matrix[0][0]) && compare(matrix[1][1],matrix[2][2])) && compare(matrix[1][1],"X") ||
-            (compare(matrix[1][1],matrix[2][0]) && compare(matrix[1][1],matrix[0][2])) && compare(matrix[1][1],"X") ) {
+            (compare(matrix[1][1],matrix[0][0]) && compare(matrix[1][1],matrix[2][2])) && compare(matrix[1][1],str) ||
+            (compare(matrix[1][1],matrix[2][0]) && compare(matrix[1][1],matrix[0][2])) && compare(matrix[1][1],str) ) {
             
+            if(str.equals("X")){
             XWins();
-            return XWin = true;
-            
-        }
-        
-        else if(
-            (compare(matrix[0][0],matrix[0][1]) && compare(matrix[0][0],matrix[0][2])) && compare(matrix[0][0],"O") ||
-            (compare(matrix[1][0],matrix[1][1]) && compare(matrix[1][0],matrix[1][2])) && compare(matrix[1][0],"O") ||
-            (compare(matrix[2][0],matrix[2][1]) && compare(matrix[2][0],matrix[2][2])) && compare(matrix[2][0],"O") ||
-                
-            (compare(matrix[0][1],matrix[1][1]) && compare(matrix[0][1],matrix[2][1])) && compare(matrix[0][1],"O") ||
-            (compare(matrix[0][2],matrix[1][2]) && compare(matrix[0][2],matrix[2][2])) && compare(matrix[0][2],"O") ||
-            (compare(matrix[0][0],matrix[1][0]) && compare(matrix[0][0],matrix[2][0])) && compare(matrix[0][0],"O") ||
-                
-            (compare(matrix[1][1],matrix[0][0]) && compare(matrix[1][1],matrix[2][2])) && compare(matrix[1][1],"O") ||
-            (compare(matrix[1][1],matrix[2][0]) && compare(matrix[1][1],matrix[0][2])) && compare(matrix[1][1],"O") ){
-            
-            OWins();
-            return OWin = true;
-            
-        }
-            
-                 
-        else
-            if(view.counter == 9){
+            XWin = true;
+            }else if(str.equals("O")){
+                OWins();
+                OWin = true;
+            }else {
                 draw();
-                return draw = true;
+                draw = true;
             }
-        return false;
+            
+        }
     }
     
     public void XWins(){
@@ -205,23 +204,23 @@ public class logic extends Application {
     }
     public void draw(){
         alert.setContentText("Draw. Do you  want to play again?");
-                Optional<ButtonType> result = alert.showAndWait();
-                if(result.get() == ButtonType.OK){
-                    for (int i = 0; i < 3; ++i)
-                        for (int j = 0; j < 3; ++j)
-                            matrix[i][j] = "";
-                    view.counter = 0;
-                    view.button1.setText("");
-                    view.button2.setText("");
-                    view.button3.setText("");
-                    view.button4.setText("");
-                    view.button5.setText("");
-                    view.button6.setText("");
-                    view.button7.setText("");
-                    view.button8.setText("");
-                    view.button9.setText("");
-                }else
-                    System.exit(0); 
+            Optional<ButtonType> result = alert.showAndWait();
+            if(result.get() == ButtonType.OK){
+                for (int i = 0; i < 3; ++i)
+                    for (int j = 0; j < 3; ++j)
+                        matrix[i][j] = "";
+                view.counter = 0;
+                view.button1.setText("");
+                view.button2.setText("");
+                view.button3.setText("");
+                view.button4.setText("");
+                view.button5.setText("");
+                view.button6.setText("");
+                view.button7.setText("");
+                view.button8.setText("");
+                view.button9.setText("");
+            }else
+                System.exit(0); 
     }
     public static void main(String[] args) {
         launch(args);
