@@ -19,6 +19,7 @@ public class Logic extends Application {
     public void start(Stage primaryStage){
         
         do{
+            alert.showAndWait();
             view.init();
             fillMatrix();
         }while(XWin == true || OWin == true || draw == true);
@@ -109,11 +110,10 @@ public class Logic extends Application {
         return el1.equals(el2);
     }
     public void check(){
-        check("X");
-        check("O");
+        analize();
     }
-    public  void check(String str){// function of checking if either of players has won
-        if(
+    public boolean check(String str){// function of checking if either of players has won
+        return
             (compare(matrix[0][0],matrix[0][1]) && compare(matrix[0][0],matrix[0][2])) && compare(matrix[0][0],str) ||
             (compare(matrix[1][0],matrix[1][1]) && compare(matrix[1][0],matrix[1][2])) && compare(matrix[1][0],str) ||
             (compare(matrix[2][0],matrix[2][1]) && compare(matrix[2][0],matrix[2][2])) && compare(matrix[2][0],str) ||
@@ -123,22 +123,20 @@ public class Logic extends Application {
             (compare(matrix[0][0],matrix[1][0]) && compare(matrix[0][0],matrix[2][0])) && compare(matrix[0][0],str) ||
                 
             (compare(matrix[1][1],matrix[0][0]) && compare(matrix[1][1],matrix[2][2])) && compare(matrix[1][1],str) ||
-            (compare(matrix[1][1],matrix[2][0]) && compare(matrix[1][1],matrix[0][2])) && compare(matrix[1][1],str) ) {
-            
-            if(str.equals("X")){
+            (compare(matrix[1][1],matrix[2][0]) && compare(matrix[1][1],matrix[0][2])) && compare(matrix[1][1],str) ; 
+    }
+    public void analize(){
+        if(check("X") == true){
             XWins();
             XWin = true;
-            }else if(str.equals("O")){
-                OWins();
-                OWin = true;
-            }else {
-                draw();
-                draw = true;
-            }
-            
+        }else if(check("O") == true){
+            OWins();
+            OWin = true;
+        }else {
+            draw();
+            draw = true;
         }
     }
-    
     public void XWins(){
         alert.setContentText("X -winners. Do you  want to play again?");
         Optional<ButtonType> result = alert.showAndWait();
