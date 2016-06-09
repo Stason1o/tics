@@ -6,11 +6,13 @@
 package javafxapplication2;
 
 import java.util.Optional;
+import javafx.application.Application;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.stage.Stage;
 
 
-public class logic {
+public class logic extends Application {
     JavaFXApplication2 view = new JavaFXApplication2();
     String[][] matrix = {{"","",""},{"","",""},{"","",""}};
     Alert  alert   = new Alert(Alert.AlertType.CONFIRMATION);
@@ -18,11 +20,15 @@ public class logic {
     boolean OWin = false;
     boolean draw = false;
     
-    public void game(){
+    @Override
+    public void start(Stage primaryStage){
+        view.init();
         do{
-            
             checkGame();
         }while(XWin == true || OWin == true || draw == true);
+    }
+    public void game(){
+        
     }
     
     public void checkGame(){
@@ -216,5 +222,8 @@ public class logic {
                     view.button9.setText("");
                 }else
                     System.exit(0); 
+    }
+    public static void main(String[] args) {
+        launch(args);
     }
 }

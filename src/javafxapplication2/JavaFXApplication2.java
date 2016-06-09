@@ -23,7 +23,7 @@ import javafx.stage.Stage;
  *
  * @author Stas
  */
-public class JavaFXApplication2 extends Application {
+public class JavaFXApplication2 {
     int counter;
     Button button1 = new Button();
     Button button2 = new Button();
@@ -36,8 +36,7 @@ public class JavaFXApplication2 extends Application {
     Button button9 = new Button();
     
     
-    @Override
-    public void start(Stage primaryStage) {
+    public void init() {
         
         
         button1.setText("");
@@ -91,6 +90,7 @@ public class JavaFXApplication2 extends Application {
         menuBar.setMinSize(300, 20);
         Scene scene = new Scene(root, 300, 250);
         
+        Stage primaryStage = new Stage();
         primaryStage.setTitle("Hello World!");
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -99,9 +99,6 @@ public class JavaFXApplication2 extends Application {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        launch(args);
-    }
     
     public void actionButtons(){
         button1.setOnAction(new EventHandler<ActionEvent>() {
