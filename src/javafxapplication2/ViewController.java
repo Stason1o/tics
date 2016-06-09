@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package javafxapplication2;
 
 import javafx.event.ActionEvent;
@@ -16,10 +12,6 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-/**
- *
- * @author Stas
- */
 public class ViewController {
     int counter;
     Button button1 = new Button();
@@ -31,11 +23,8 @@ public class ViewController {
     Button button7 = new Button();
     Button button8 = new Button();
     Button button9 = new Button();
-    
-    
+
     public void init() {
-        
-        
         button1.setText("");
         button2.setText("");
         button3.setText("");
@@ -45,14 +34,9 @@ public class ViewController {
         button7.setText("");
         button8.setText("");
         button9.setText("");
-        
         counter = 0;
-        
-        
-        
         StackPane root = new StackPane();
-        
-        
+
         MenuBar menuBar = new MenuBar();
         Menu menu = new Menu("Choose type");
         MenuItem onePlayer = new MenuItem("Play vs Computer");
@@ -73,7 +57,6 @@ public class ViewController {
         root.setAlignment(button7,Pos.BOTTOM_LEFT);
         root.setAlignment(button8,Pos.BOTTOM_CENTER);
         root.setAlignment(button9,Pos.BOTTOM_RIGHT);
-        
         //setting size to all buttons   
         button1.setMinSize(100, 100);
         button2.setMinSize(100, 100);
@@ -86,15 +69,12 @@ public class ViewController {
         button9.setMinSize(100, 100);
         menuBar.setMinSize(300, 10);
         Scene scene = new Scene(root, 300, 300);
-        
         Stage primaryStage = new Stage();
         primaryStage.setTitle("TicTacToe");
         primaryStage.setScene(scene);
         primaryStage.show();
         actionButtons();
     }
-
-    
     public void actionButtons(){
         button1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -109,7 +89,6 @@ public class ViewController {
                     }
             }
         });
-        
         button2.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -123,7 +102,6 @@ public class ViewController {
                     }
             }
         });
-        
         button3.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -202,7 +180,6 @@ public class ViewController {
                     }
             }
         });
-        
         button9.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
